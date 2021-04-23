@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\aboutController;
 use App\Http\Controllers\auth\loginController;
+use App\Http\Controllers\auth\logoutController;
 use App\Http\Controllers\auth\registerController;
+use App\Http\Controllers\admin\dashboardController;
+use App\Http\Controllers\admin\contactsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,7 @@ use App\Http\Controllers\auth\registerController;
 |
 */
 
-Route::get('/', [homeController::class, 'index']);
+Route::get('/', [homeController::class, 'index'])->name('home');
 
 Route::get('/about', [aboutController::class, 'index']);
 
@@ -27,3 +30,12 @@ Route::get('/register', [registerController::class, 'index'])->name('register');
 
 Route::post('/login', [loginController::class, 'login']);
 Route::post('/register', [registerController::class, 'register']);
+
+Route::get('/logout', [logoutController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/view-contacts', [contactsController::class, 'index'])->name('viewContacts');
+
+Route::post('/dashboard/contact', [contactsController::class, 'create'])->name('addContact');
+// Route::put('/dashboard/contact', [contactsController::class, 'update'])->name('editContact');
+Route::delete('/dashboard/contact/{contacts}', [contactsController::class, 'destroy'])->name('deleteContact');

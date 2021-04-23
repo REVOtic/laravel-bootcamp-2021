@@ -10827,6 +10827,40 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.admin-layout #wrapper {
+  overflow-x: hidden;
+}
+.admin-layout #sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+.admin-layout #sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+.admin-layout #sidebar-wrapper .list-group {
+  width: 15rem;
+}
+.admin-layout #page-content-wrapper {
+  min-width: 100vw;
+}
+.admin-layout #wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+@media (min-width: 768px) {
+  .admin-layout #sidebar-wrapper {
+    margin-left: 0;
+  }
+  .admin-layout #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  .admin-layout #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
 .site-footer {
   background-color: #26272b;
   padding: 45px 0 20px;

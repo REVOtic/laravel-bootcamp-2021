@@ -13,7 +13,17 @@ class loginController extends Controller
     }
 
     // Logic to login the user
-    public function login(){
-        echo 'Working';
+    public function login(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:250',
+        ]);
+
+        // Auth
+        if(auth()->attempt($request->only('email', 'password'))){
+            return redirect()->route('dashboard');
+        } else {
+            return back()->with('status', 'Invalid Login Details');
+        }
     }
 }
