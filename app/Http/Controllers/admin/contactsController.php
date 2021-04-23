@@ -112,9 +112,33 @@ class contactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $contact_id)
     {
-        //
+        $this->validate($request, [
+            'full_name' => 'required|max:250',
+            'email'     => 'nullable|email',
+            'phone'     => 'required',
+            'sec_phone' => 'max:250',
+            'country'   => 'max:250',
+            'company'   => 'max:250'
+        ]);
+        
+        // Get the contact by ID
+        $contact = contacts::where('id', '=', $contact_id)->update([
+            'name'          => $request->full_name,
+            'phone'         => $request->phone,
+            'email'         => $request->email,
+            'sec_phone'     => $request->sec_phone,
+            'country'       => $request->country,
+            'company'       => $request->company,
+        ]);
+
+        // List of contacts 
+        $contacts = contacts::all();
+
+        return view('admin-pages.viewContacts', [
+            'contacts' => $contacts
+        ]);
     }
 
     /**

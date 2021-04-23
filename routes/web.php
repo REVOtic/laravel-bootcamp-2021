@@ -37,5 +37,5 @@ Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard
 Route::get('/dashboard/view-contacts', [contactsController::class, 'index'])->name('viewContacts');
 
 Route::post('/dashboard/contact', [contactsController::class, 'create'])->name('addContact');
-// Route::put('/dashboard/contact', [contactsController::class, 'update'])->name('editContact');
+Route::put('/dashboard/contact/{contacts}', [contactsController::class, 'update'])->name('editContact');
 Route::delete('/dashboard/contact/{contacts}', [contactsController::class, 'destroy'])->name('deleteContact');
