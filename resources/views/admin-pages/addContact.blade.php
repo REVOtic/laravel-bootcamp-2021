@@ -6,7 +6,7 @@
 
     <div class="add-contact-form">
         {{-- Register Form --}}
-        <form method="post" action="{{ route('addContact') }}">
+        <form method="post" action="{{ route('addContact') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group mb-3">
@@ -16,6 +16,11 @@
                 @error('full_name')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="user_avatar" class="form-label">User Image (Avatar)</label>
+                <input class="form-control" type="file" id="user_avatar" name="user_avatar">
             </div>
 
             <div class="form-group mb-3">

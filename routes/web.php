@@ -36,6 +36,7 @@ Route::get('/logout', [logoutController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/view-contacts', [contactsController::class, 'index'])->name('viewContacts');
 
-Route::post('/dashboard/contact', [contactsController::class, 'create'])->name('addContact');
+Route::get('/dashboard/contact', [contactsController::class, 'create'])->name('addContact');
+Route::post('/dashboard/contact', [contactsController::class, 'store']);
 Route::put('/dashboard/contact/{contacts}', [contactsController::class, 'update'])->name('editContact');
 Route::delete('/dashboard/contact/{contacts}', [contactsController::class, 'destroy'])->name('deleteContact');

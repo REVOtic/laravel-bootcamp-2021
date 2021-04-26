@@ -6,10 +6,10 @@ use App\Models\contacts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class contactsController extends Controller
+class contactsApiController extends Controller
 {
     public function __construct(){
-        $this->middleware(['auth']);
+        $this->middleware(['auth:api']);
     }
 
     /**
@@ -18,16 +18,6 @@ class contactsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // List of contacts 
-        $contacts = contacts::all();
-
-        return view('admin-pages.viewContacts', [
-            'contacts' => $contacts
-        ]);
-    }
-
-    public function getAllContacts()
     {
         // List of contacts 
         $contacts = contacts::all();

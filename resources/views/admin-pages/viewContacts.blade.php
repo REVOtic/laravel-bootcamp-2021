@@ -6,6 +6,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th scope="col"></th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
@@ -18,6 +19,9 @@
         <tbody>
             @foreach ($contacts as $contact)
             <tr>
+                <th>
+                    <img style="width:100px;" src="{{ Storage::url('public/'.$contact['user_avatar']) }}" />
+                </th>
                 <th>{{ $contact['name'] }}</th>
                 <td>{{ $contact['email'] }}</td>
                 <td>{{ $contact['phone'] }}</td>
